@@ -9,8 +9,11 @@ import spock.lang.Specification
 class ChatServerMessageSpec extends Specification {
 
     def "Adding a new Message should add it in the model"() {
-        given: "A server"
-        def server = new ChatServer(ChatInstance.initEmptyChat(), null, null)
+        given: "A client notifier"
+        def clientNotifier = Mock(ClientNotifierInterface)
+
+        and: "A server"
+        def server = new ChatServer(ChatInstance.initEmptyChat(), [clientNotifier], null)
 
         and: "A chatroom"
         int chatroomId = server.addChatroom(null, null)
@@ -36,7 +39,7 @@ class ChatServerMessageSpec extends Specification {
         def server = new ChatServer(ChatInstance.initEmptyChat(), [clientNotifier], null)
 
         and: "A chatroom"
-        int chatroomId = server.addChatroom(null, null)
+        int chatroomId = server.addChatroom("testChatroom", null)
 
         when: "A new message is added"
         server.addMessage(chatroomId, null, "Test message")

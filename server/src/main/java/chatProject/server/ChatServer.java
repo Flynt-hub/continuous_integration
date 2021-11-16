@@ -321,7 +321,7 @@ public class ChatServer<T> implements UserAlgo, ChatroomAlgo<T>, MessageAlgo<T>,
 
         notifyNewMessage(chatroomId, newMessage);
 
-         return newMessage;
+        return newMessage;
     }
 
     /**
