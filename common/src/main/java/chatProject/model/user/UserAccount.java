@@ -36,7 +36,7 @@ public class UserAccount {
      * @return the username
      */
     public String getUsername() {
-        return "test";
+        return username;
     }
 
     @Override
@@ -49,7 +49,7 @@ public class UserAccount {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return Objects.hash(username);
     }
 
     @Override
