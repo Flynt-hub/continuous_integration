@@ -13,7 +13,7 @@ public class Message<T> {
     /**
      * The ID of the message (unique).
      */
-    private final int id;
+    final private int id;
     /**
      * The sender of the message.
      */
@@ -34,7 +34,7 @@ public class Message<T> {
      * @return the message unique ID
      */
     public int getId() {
-        return 0;
+        return id;
     }
 
     /**
