@@ -319,6 +319,8 @@ public class ChatServer<T> implements UserAlgo, ChatroomAlgo<T>, MessageAlgo<T>,
     public Message<T> addMessage(int chatroomId, UserInfo user, T content) {
         Message<T> newMessage = getChatroom(chatroomId).addMessage(user, content);
 
+        notifyNewMessage(chatroomId, newMessage);
+
          return newMessage;
     }
 
