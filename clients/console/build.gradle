@@ -4,7 +4,7 @@ application {
 
     run {
         // default arguments : connect to the server locally on ports 1234 and 4567
-        args = ["127.0.0.1", "1234", "4567"]
+        args = ["127.0.0.1", "5123", "5124"]
     }
 }
 

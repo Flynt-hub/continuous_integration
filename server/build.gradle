@@ -4,7 +4,7 @@ application {
 
     run {
         // default arguments : open server ports on 1234 and 4567
-        args = ["1234", "4567"]
+        args = ["5123", "5124"]
     }
 }
 
