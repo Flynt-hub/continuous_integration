@@ -266,7 +266,7 @@ public class ChatServer<T> implements UserAlgo, ChatroomAlgo<T>, MessageAlgo<T>,
      */
     @Override
     public Chatroom<T> getChatroom(int chatroomId) {
-        return chatInstance.getCurentChatrooms().get(0);
+        return chatInstance.getCurentChatrooms().get(chatroomId);
     }
 
     /**
