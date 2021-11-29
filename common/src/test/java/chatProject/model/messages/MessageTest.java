@@ -1,5 +1,8 @@
 package chatProject.model.messages;
 
+import chatProject.model.user.Status;
+import chatProject.model.user.UserAccount;
+import chatProject.model.user.UserInfo;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -22,5 +25,16 @@ public class MessageTest {
 
         assertEquals("The message content is not the one set in the constructor",
                 content, message.getMessage());
+    }
+
+    @Test
+    public void getSender() {
+        UserAccount account = new UserAccount(1, "Sender");
+        Status status = Status.ACTIVE;
+        MessageOwnerConcrete owner = new MessageOwnerConcrete(account,status);
+        UserInfo sender = new UserInfo(account, status);
+        final Message<String> message = new Message<>(0,owner, null);
+
+        assertEquals("Le sender doit être le même", owner, message.getSender());
     }
 }
