@@ -22,7 +22,7 @@ public class ChatroomTest {
         assertEquals(name, chatroom.getName());
         //assertNotEquals("testNegatif", chatroom.getName());
     }
-    /*
+
     @Test
     public void getOwner(){
 
@@ -37,7 +37,7 @@ public class ChatroomTest {
         //Assert
         assertEquals(owner, chatroom.getOwner());
     }
-
+    /*
     @Test
     public void addMessage(){
 
