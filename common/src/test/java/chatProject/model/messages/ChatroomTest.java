@@ -16,11 +16,11 @@ public class ChatroomTest {
         String name = "testName";
 
         //Act
-        Chatroom chatroom = new Chatroom(name, null, null);
+        Chatroom<String> chatroom = new Chatroom<String>(name, null, null);
 
         //Assert
-        assertEquals(name, chatroom.getName());
-        //assertNotEquals("testNegatif", chatroom.getName());
+        assertEquals("Le name doit être le même", name, chatroom.getName());
+
     }
 
     @Test
@@ -32,10 +32,10 @@ public class ChatroomTest {
         UserInfo owner = new UserInfo(account,status);
 
         //Act
-        Chatroom chatroom = new Chatroom(null, owner, null);
+        Chatroom<String> chatroom = new Chatroom<String>(null, owner, null);
 
         //Assert
-        assertEquals(owner, chatroom.getOwner());
+        assertEquals("Le owner doit être le même",owner, chatroom.getOwner());
     }
     /*
     @Test
