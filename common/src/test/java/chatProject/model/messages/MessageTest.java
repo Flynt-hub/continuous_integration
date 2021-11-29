@@ -23,5 +23,4 @@ public class MessageTest {
         assertEquals("The message content is not the one set in the constructor",
                 content, message.getMessage());
     }
-
 }

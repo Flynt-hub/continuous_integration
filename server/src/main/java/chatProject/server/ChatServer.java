@@ -269,6 +269,22 @@ public class ChatServer<T> implements UserAlgo, ChatroomAlgo<T>, MessageAlgo<T>,
         return chatInstance.getCurentChatrooms().get(chatroomId);
     }
 
+    public Boolean verifyChatroomName(ArrayList<Chatroom<T>> listChatroom, Chatroom<T> newChatroom) //II
+    {
+        boolean verif = true;
+
+        if (!listChatroom.isEmpty()) {
+
+            for (int i = 0; i <= listChatroom.size()-1; i++) {
+
+                if (listChatroom.get(i).getName().equals(newChatroom.getName())) {
+                    verif = false;
+
+                }
+            }
+        }
+        return verif;
+    }
     /**
      * {@inheritDoc}
      */
@@ -278,13 +294,23 @@ public class ChatServer<T> implements UserAlgo, ChatroomAlgo<T>, MessageAlgo<T>,
         // instantiate the chatroom
         final Chatroom<T> newChatroom = new Chatroom<>(chatroomName, owner, new ArrayList<>());
 
-        // add it in the model
-        final int newChatroomId = chatInstance.addChatroom(newChatroom);
+        // Récupération de la vérif
+        ArrayList<Chatroom<T>> listeChatroom = (ArrayList<Chatroom<T>>) chatInstance.getCurentChatrooms();
+        boolean test = verifyChatroomName(listeChatroom, newChatroom);
 
-        /* maybe I should notify clients about the new chatroom ?? */
-        notifyNewChatroom(newChatroom);
+        if(test == true)
+        {
+            // add it in the model
+            final int newChatroomId = chatInstance.addChatroom(newChatroom);
 
-        return newChatroomId;
+            /* maybe I should notify clients about the new chatroom ?? */
+            notifyNewChatroom(newChatroom);
+            return newChatroomId;
+        }
+        else
+        {
+            return -15;
+        }
     }
 
     /**

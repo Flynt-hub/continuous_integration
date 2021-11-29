@@ -4,6 +4,7 @@ import chatProject.model.messages.ChatInstance
 import chatProject.model.messages.Chatroom
 import chatProject.server.ChatServer
 import chatProject.server.ClientNotifierInterface
+import org.junit.Assert
 import spock.lang.Specification
 
 class ChatServerChatroomSpec extends Specification {
@@ -46,5 +47,4 @@ class ChatServerChatroomSpec extends Specification {
         // there is only 1 chatroom in the model - get it
         server.getChatroom(0) == chatroom
     }
-
 }
