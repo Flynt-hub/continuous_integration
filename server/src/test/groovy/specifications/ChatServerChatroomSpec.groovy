@@ -7,6 +7,8 @@ import chatProject.server.ClientNotifierInterface
 import org.junit.Assert
 import spock.lang.Specification
 
+import java.security.acl.Owner
+
 class ChatServerChatroomSpec extends Specification {
 
     def "Adding a new Chatroom should add it in the model"() {
@@ -15,7 +17,6 @@ class ChatServerChatroomSpec extends Specification {
 
         when: "A new chatroom is created"
         server.addChatroom("Test chatroom", null)
-
         then: "The new chatroom should be added to the model"
         server.currentChatroomNames.contains("Test chatroom")
     }
