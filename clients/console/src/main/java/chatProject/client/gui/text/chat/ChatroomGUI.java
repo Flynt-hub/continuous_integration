@@ -90,6 +90,7 @@ public class ChatroomGUI<T> implements MessageListener<T>, UserListener {
 
         final Runnable action =  () -> {
             window.close();
+            chat.getCurrentUser().setCurrentStatus(Status.REVOKED);
             msgUpdateThread.interrupt();
         };
 
