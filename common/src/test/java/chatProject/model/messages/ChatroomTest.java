@@ -55,4 +55,5 @@ public class ChatroomTest {
         //Assert
         assertEquals(chatroom.addMessage(null, content), messages.get(1));
     }
+
 }
