@@ -7,6 +7,18 @@ import static org.junit.Assert.*;
 public class UserAccountTest {
 
     @Test
+    public void getId() {
+
+        //Arrange
+        final int id = 1;
+
+        //Act
+        final UserAccount user = new UserAccount(1,null);
+
+        //Assert
+        assertEquals("La méthode doit retourner l'id du user, soit 1", id, user.getId());
+    }
+    @Test
     public void getUsername() {
 
         final String username = "My user";
