@@ -66,4 +66,32 @@ public class ChatInstanceTest<T> {
         //Assert
         assertEquals("retourne l'id de la chatroom dans la liste de chatrooms", index, chatInstance.addChatroom(chatroom));
     }
+
+    @Test
+    public void getUsers(){
+
+        //Arrange
+        ArrayList<Chatroom<T>> chatrooms = new ArrayList<Chatroom<T>>() {};
+        Chatroom<T> chatroom = new Chatroom<T>("Chatroom1", null, null);
+        chatrooms.add(chatroom);
+
+        UserAccount account_1 = new UserAccount(1, "MyUser_1");
+        UserAccount account_2 = new UserAccount(2, "MyUser_2");
+
+        Status status_1 = Status.ACTIVE;
+        Status status_2 = Status.ACTIVE;
+
+        UserInfo userInfo_1 = new UserInfo(account_1, status_1);
+        UserInfo userInfo_2 = new UserInfo(account_1, status_1);
+
+        Map<UserInfo, LocalTime> map = new HashMap<>();
+        map.put(userInfo_1, LocalTime.now());
+        map.put(userInfo_2, LocalTime.now());
+
+        //Act
+        ChatInstance<T> chatInstance = new ChatInstance<T>(chatrooms, map);
+
+        //Assert
+        assertEquals("retourne la lister des users", chatInstance.getUsers(), map);
+    }
 }
