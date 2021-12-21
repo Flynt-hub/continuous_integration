@@ -1,42 +1,49 @@
 package chatProject.model.messages;
 
 
+import chatProject.model.user.Status;
+import chatProject.model.user.UserAccount;
+import chatProject.model.user.UserInfo;
 import org.junit.Test;
 import chatProject.model.messages.*;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.time.LocalTime;
+import java.util.*;
 
 
 import static org.junit.Assert.*;
 
-/*
+
 public class ChatInstanceTest<T> {
 
 
     @Test
-    public void getCurentChatrooms(){
+    public void getCurentChatrooms() {
 
         //Arrange
-
-        List<Chatroom<T>> list1 = new List<Chatroom<T>>() {};
-
+        ArrayList<Chatroom<T>> chatrooms = new ArrayList<Chatroom<T>>() {};
         Chatroom<T> chatroom1 = new Chatroom<T>("Chatroom1", null, null);
         Chatroom<T> chatroom2 = new Chatroom<T>("Chatroom2", null, null);
-        Chatroom<T> chatroom3 = new Chatroom<T>("Chatroom3", null, null);
+        chatrooms.add(chatroom1);
+        chatrooms.add(chatroom2);
+
+        UserAccount account = new UserAccount(1, "MyUser");
+        Status status = Status.ACTIVE;
+        UserInfo userInfo = new UserInfo(account, status);
+
+        Map<UserInfo, LocalTime> map = new HashMap<>();
+        map.put(userInfo, LocalTime.now());
+
 
         //Act
-
-        list1.add(chatroom1);
-        list1.add(chatroom2);
-        list1.add(chatroom3);
+        ChatInstance<T> chatInstance = new ChatInstance<T>(chatrooms, map);
 
         //Assert
 
-        assertEquals();
+        assertEquals("retourne la meme liste de chatrooms non modifiable", chatInstance.getCurentChatrooms(), Collections.unmodifiableList(chatrooms));
     }
-
-
+}
+/*
     @Test
     public void addChatroom(){
 
