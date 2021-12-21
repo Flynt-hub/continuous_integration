@@ -42,23 +42,28 @@ public class ChatInstanceTest<T> {
 
         assertEquals("retourne la meme liste de chatrooms non modifiable", chatInstance.getCurentChatrooms(), Collections.unmodifiableList(chatrooms));
     }
-}
-/*
+
+
     @Test
     public void addChatroom(){
 
         //Arrange
-        List<Chatroom<T>> listChatroomInitiale= new ArrayList<Chatroom<T>>() {};
-        Chatroom<T> chatroom1 = new Chatroom<T>("Chatroom1", null, null);
+        ArrayList<Chatroom<T>> chatrooms = new ArrayList<Chatroom<T>>() {};
+        Chatroom<T> chatroom = new Chatroom<T>("Chatroom1", null, null);
+        chatrooms.add(chatroom);
 
-        listChatroomInitiale.add(chatroom1);
-        int index = listChatroomInitiale.indexOf((chatroom1));
+        UserAccount account = new UserAccount(1, "MyUser");
+        Status status = Status.ACTIVE;
+        UserInfo userInfo = new UserInfo(account, status);
+
+        Map<UserInfo, LocalTime> map = new HashMap<>();
+        map.put(userInfo, LocalTime.now());
 
         //Act
-
+        int index = chatrooms.indexOf((chatroom));
+        ChatInstance<T> chatInstance = new ChatInstance<T>(chatrooms, map);
 
         //Assert
-        assertEquals(index, listChatroomInitiale.addChatroom(chatroom1));
+        assertEquals("retourne l'id de la chatroom dans la liste de chatrooms", index, chatInstance.addChatroom(chatroom));
     }
 }
-*/
