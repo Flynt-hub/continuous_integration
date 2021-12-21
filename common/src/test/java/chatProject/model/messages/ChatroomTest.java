@@ -56,4 +56,12 @@ public class ChatroomTest {
         assertEquals(chatroom.addMessage(null, content), messages.get(1));
     }
 
+    @Test
+    public void testToString() {
+
+        final Chatroom<String> chatroom = new Chatroom<String>("MyUser", null, null);
+        assertEquals("The toString() method of a Chatroom should print the name if owner == null",
+                "MyUser", chatroom.toString());
+    }
+
 }
