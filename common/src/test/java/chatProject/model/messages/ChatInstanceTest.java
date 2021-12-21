@@ -94,4 +94,32 @@ public class ChatInstanceTest<T> {
         //Assert
         assertEquals("retourne la lister des users", chatInstance.getUsers(), map);
     }
+
+    @Test
+    public void initEmptyChat(){
+
+        //Arrange
+        ArrayList<Chatroom<T>> chatrooms = new ArrayList<Chatroom<T>>();
+        Chatroom<T> chatroom = new Chatroom<T>("Chatroom1", null, null);
+        chatrooms.add(chatroom);
+
+        UserAccount account = new UserAccount(1, "MyUser");
+        Status status = Status.ACTIVE;
+        UserInfo userInfo = new UserInfo(account, status);
+
+        Map<UserInfo, LocalTime> map = new HashMap<UserInfo, LocalTime>();
+        map.put(userInfo, LocalTime.now());
+
+
+        //Act
+
+        ChatInstance<T> chatInstance = new ChatInstance<T>(chatrooms, map);
+        ChatInstance<T> chatInstanceTest = new ChatInstance<T>(chatrooms, map);
+
+        ChatInstance.initEmptyChat();
+
+        //Assert
+        assertNotEquals("retourne une nouvelle chatInstance", chatInstance, chatInstanceTest);
+
+    }
 }
