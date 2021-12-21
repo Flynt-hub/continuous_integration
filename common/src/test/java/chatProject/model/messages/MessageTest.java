@@ -52,4 +52,17 @@ public class MessageTest {
         //Assert
         assertEquals("Le sender doit être le même", owner, message.getSender());
     }
+
+    @Test
+    public void testToString() {
+        //Arrange
+        String messageRef = "Message{id=0, sender=null, content=content}";
+
+        //Act
+        final Message<String> message = new Message<String>(0, null, "content");
+
+        //Assert
+        assertEquals("The toString() method of a Message should print the id, sender and content",
+                messageRef, message.toString());
+    }
 }
