@@ -111,9 +111,7 @@ public class ChatInstanceTest<T> {
 
         //Assert
         assertTrue("le nouvel utilisateur existe pas, on ajoute l'ajoute, retourne true", chatInstance.addUser(userInfo_2));
-
     }
-
 
     @Test
     public void getUsers(){

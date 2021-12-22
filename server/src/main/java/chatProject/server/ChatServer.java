@@ -295,7 +295,7 @@ public class ChatServer<T> implements UserAlgo, ChatroomAlgo<T>, MessageAlgo<T>,
         }
         else
         {
-            return -15;
+            return -1;
         }
     }
 

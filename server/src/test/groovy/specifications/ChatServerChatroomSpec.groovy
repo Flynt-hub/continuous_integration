@@ -2,6 +2,7 @@ package specifications
 
 import chatProject.model.messages.ChatInstance
 import chatProject.model.messages.Chatroom
+import chatProject.model.messages.Message
 import chatProject.server.ChatServer
 import chatProject.server.ClientNotifierInterface
 import org.junit.Assert
@@ -32,6 +33,7 @@ class ChatServerChatroomSpec extends Specification {
         when: "A new chatroom is created"
         server.addChatroom("Test chatroom", null)
 
+
         then: "The client listener should be notified about a new chatroom"
         // this check means : the 'clientNotifier.notifyNewChatroom()' method was called 1x
         1 * clientNotifier.notifyNewChatroom(_)
@@ -48,4 +50,41 @@ class ChatServerChatroomSpec extends Specification {
         // there is only 1 chatroom in the model - get it
         server.getChatroom(0) == chatroom
     }
+
+    def "A new Chatroom can be add in server"() {
+        given : "A server "
+        //a server
+        def server = new ChatServer(ChatInstance.initEmptyChat(), null, null)
+
+        expect: "A new Chatroom will be add in the server and return the chatroom's ID"
+        server.addChatroom("MyChat1", null) == 0
+    }
+
+    def "A new Chatroom can't be add in server"() {
+        given : "A server with a Chatroom"
+        // a chatroom
+        def chatroom = new Chatroom("MyChatroom", null, null)
+        //a server with a Chatroom in the model
+        def server = new ChatServer(new ChatInstance([chatroom], null), null, null)
+
+        expect: "A new Chatroom won't be add in the server and return -15"
+        server.addChatroom("MyChatroom", null) == -15
+    }
+
+    def "The server should retrieve a Chatroom messages "(){
+        given : "A server with a Chatroom and a messages list"
+        // a messages list
+        def messages = new ArrayList<Message<String>>(){
+            Message message1 = new Message(0, null, "Content1")
+            Message message2 = new Message(1,null,"Content2")
+        };
+        // a chatroom with messages
+        def chatroom = new Chatroom("MyChatroom", null, messages)
+        //a server with a Chatroom in the model
+        def server = new ChatServer(new ChatInstance([chatroom], null), null, null)
+
+        expect: "Retreive chatrooms messages by its id"
+        server.getChatroomMessages(0) == messages
+    }
+
 }
